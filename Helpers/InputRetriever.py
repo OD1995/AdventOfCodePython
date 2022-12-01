@@ -28,6 +28,6 @@ class InputRetriever:
         data
     ):
         zero_padded = f"0{self.day}" if len(str(self.day)) == 1 else self.day
-        file_path = fr"C:\Dev\AdventOfCode\{self.year}\Day{zero_padded}\data.json"
+        file_path = fr"C:\Dev\AdventOfCodePython\{self.year}\Day{zero_padded}\data.json"
         with open(file_path,'w') as f:
             json.dump(data,f)

@@ -1,5 +1,5 @@
 import sys
-sys.path.insert(0,r"C:\Dev\AdventOfCode\Helpers")
+sys.path.insert(0,r"C:\Dev\AdventOfCodePython\Helpers")
 from InputRetriever import InputRetriever
 
 ir = InputRetriever(2021,1)
