@@ -25,9 +25,23 @@ class InputRetriever:
 
     def save(
         self,
-        data
+        data,
+        test=False
     ):
         zero_padded = f"0{self.day}" if len(str(self.day)) == 1 else self.day
-        file_path = fr"C:\Dev\AdventOfCodePython\{self.year}\Day{zero_padded}\data.json"
+        T = "Test" if test else ""
+        file_path = fr"C:\Dev\AdventOfCodePython\{self.year}\Day{zero_padded}\data{T}.json"
         with open(file_path,'w') as f:
             json.dump(data,f)
+
+    def save_both(
+        self,
+        callback,
+        data_list
+    ):
+        for i,D in enumerate(data_list):
+            processed_data = callback(D)
+            self.save(
+                processed_data,
+                i == 0
+            )

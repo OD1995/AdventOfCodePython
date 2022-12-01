@@ -5,29 +5,34 @@ from InputRetriever import InputRetriever
 ir = InputRetriever(2022,1)
 
 data = ir.get_data()
-# data = """1000
-# 2000
-# 3000
+testData = """1000
+2000
+3000
 
-# 4000
+4000
 
-# 5000
-# 6000
+5000
+6000
 
-# 7000
-# 8000
-# 9000
+7000
+8000
+9000
 
-# 10000"""
+10000"""
 
-list_of_strings = data.split("\n\n")
-list_of_lists = [
-    [
-        int(y)
-        for y in x.split("\n")
-        if y != ""
+def processor(data):
+    list_of_strings = data.split("\n\n")
+    list_of_lists = [
+        [
+            int(y)
+            for y in x.split("\n")
+            if y != ""
+        ]
+        for x in list_of_strings
     ]
-    for x in list_of_strings
-]
+    return list_of_lists
 
-ir.save(list_of_lists)
+ir.save_both(
+    processor,
+    [testData,data]
+)
