@@ -15,20 +15,13 @@ me_lookup = {
     "Z" : "S"
 }
 
-
-winning_combinations1 = {
-    ("A","Y") : 1,
-    ("B","Z") : 1,
-    ("C","X") : 1
-}
-
-winning_combinations2 = [
+winning_combinations = [
     ("A","Y"),
     ("B","Z"),
     ("C","X")
 ]
 
-selection_lookup = {
+selection_points = {
     "X" : 1,
     "Y" : 2,
     "Z" : 3
@@ -38,8 +31,8 @@ total_score = 0
 for elf,me in data:
     if elf_lookup[elf] == me_lookup[me]:
         total_score += 3
-    elif (elf,me) in winning_combinations1:
+    elif (elf,me) in winning_combinations:
         total_score += 6
-    total_score += selection_lookup[me]
+    total_score += selection_points[me]
 
 print(total_score)

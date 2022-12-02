@@ -3,64 +3,33 @@ import json
 with open(r".\2022\Day02\data.json") as f_in:
     data = json.load(f_in)
 
-elf_lookup = {
-    "A" : "R",
-    "B" : "P",
-    "C" : "S"
-}
 
-me_lookup = {
-    "X" : "R",
-    "Y" : "P",
-    "Z" : "S"
+result_lookup = {
+    "X" : {
+        "A" : 3,
+        "B" : 1,
+        "C" : 2
+    },
+    "Y" : {
+        "A" : 1,
+        "B" : 2,
+        "C" : 3
+    },
+    "Z" : {
+        "A" : 2,
+        "B" : 3,
+        "C" : 1
+    }
 }
-
-loss_lookup = {
-    "A" : "Z",
-    "B" : "X",
-    "C" : "Y"
-}
-win_lookup = {
-    "A" : "Y",
-    "B" : "Z",
-    "C" : "X"
-}
-draw_lookup = {
-    "A" : "X",
-    "B" : "Y",
-    "C" : "Z"
-}
-
-
-winning_combinations1 = {
-    ("A","Y") : 1,
-    ("B","Z") : 1,
-    ("C","X") : 1
-}
-
-winning_combinations2 = [
-    ("A","Y"),
-    ("B","Z"),
-    ("C","X")
-]
-
-selection_lookup = {
-    "X" : 1,
-    "Y" : 2,
-    "Z" : 3
+result_points = {
+    "X" : 0,
+    "Y" : 3,
+    "Z" : 6
 }
 
 total_score = 0
 for elf,needed_result in data:
-    if needed_result == "X":
-        me = loss_lookup[elf]        
-    elif needed_result == "Y":
-        me = draw_lookup[elf]
-        total_score += 3
-    else:
-        me = win_lookup[elf] 
-        total_score += 6   
-    total_score += selection_lookup[me]
-       
+    total_score += result_lookup[needed_result][elf]
+    total_score += result_points[needed_result]
 
 print(total_score)
