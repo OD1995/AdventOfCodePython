@@ -108,15 +108,20 @@ tail_position = [0,0]
 #     ['L',5],
 #     ['U',2]
 # ]
-
+positions = {
+    x : [0,0]
+    for x in range(10)
+}
 for direction,steps in data:
     # print("---",direction,steps,"---")
     for i in range(steps):
-        head_position = get_head_position(head_position,direction)
-        x,y = get_tail_position(head_position,tail_position)
-        tail_positions.append((x,y))
-        tail_position = [x,y]
-        # print_grid(head_position,tail_position)
+        positions[0] = get_head_position(positions[0],direction)
+        for j in range(1,10):
+            x,y = get_tail_position(positions[j-1],positions[j])
+            positions[j] = [x,y]
+            if j == 9:
+                tail_positions.append((x,y))
+            # print_grid(head_position,tail_position)
 print_grid2(tail_positions)
 print(len(set(tail_positions)))
 
