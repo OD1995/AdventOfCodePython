@@ -10,7 +10,8 @@ class InputRetriever:
     ):
         self.year = year
         self.day = day
-        self.sessionID = '53616c7465645f5f5e641891906daa826ea62a9097bd8c46539f0ec5e63519891410e21bfb36c8f7678d557fb29c789069007b33e03ab9db471dc9cbe240f51f'
+        ## Below changes every year
+        self.sessionID = '53616c7465645f5f3693ba7995c9a8a326c34ab6eaef3c647d01796970d200eaeca83a81831b1ef03fc71726e7a21775bb155aba2ed7aa6c068d6ca9fb0135a1'
     
     def get_data(
         self
