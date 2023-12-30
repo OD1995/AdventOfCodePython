@@ -1,11 +1,12 @@
 import json
+from datetime import datetime
+
+START = datetime.now()
 
 with open(r".\2023\Day05\data.json") as f_in:
     data = json.load(f_in)
 
 levels = {}
-
-
 
 # 79 - 81 - 81 - 81 - 74 - 78 - 78 - 82
 # 14 - 14 - 53 - 49 - 42 - 42 - 43 - 43
@@ -157,3 +158,7 @@ def get_min_using_pairs(rp,sp):
                 return new_min + r[2]
 
 print(get_min_using_pairs(res_pairs,seed_pairs))
+
+END = datetime.now()
+
+print(END - START)
